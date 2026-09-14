@@ -25,8 +25,8 @@ export default function Hero() {
   });
 
   /*
-   * Mouse parallax only on desktop.
-   * Disabled for mobile/tablet/touch devices.
+   * Mouse parallax is disabled on mobile/tablet.
+   * It only runs on desktop devices.
    */
   useEffect(() => {
     const isMobile =
@@ -57,43 +57,41 @@ export default function Hero() {
     <section
       id="top"
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-x-hidden bg-black"
+      className="relative min-h-screen w-full overflow-hidden bg-black"
     >
-      {/* =========================================
-          BACKGROUND EFFECTS
-      ========================================== */}
-
+      {/* Background Effects */}
       <div className="bg-noise pointer-events-none absolute inset-0" />
 
       <div className="gradient-radial pointer-events-none absolute inset-0" />
 
       <div className="gradient-radial-blue pointer-events-none absolute inset-0" />
 
-      {/* =========================================
-          DESKTOP ANALYTICS BACKGROUND
-      ========================================== */}
-
+      {/* Desktop Analytics Background */}
       <motion.div
         className="pointer-events-none absolute left-1/2 top-1/2 z-0 hidden -translate-x-1/2 -translate-y-1/2 lg:block"
         style={{
-          x: useTransform(xSpring, [-1, 1], [-5, 5]),
-          y: useTransform(ySpring, [-1, 1], [-3, 3]),
+          x: useTransform(
+            xSpring,
+            [-1, 1],
+            [-5, 5]
+          ),
+          y: useTransform(
+            ySpring,
+            [-1, 1],
+            [-3, 3]
+          ),
         }}
       >
         <HeroAnalytics />
       </motion.div>
 
-      {/* =========================================
-          MAIN HERO
-      ========================================== */}
-
+      {/* Main Hero Content */}
       <div className="relative z-10 flex min-h-screen flex-col">
-        {/* =========================================
-            TOP INTRO
-        ========================================== */}
 
+        {/* Top Intro */}
         <div className="section-pad pt-28 md:pt-32">
           <div className="mx-auto w-full max-w-[1400px]">
+
             <motion.div
               initial={{
                 opacity: 0,
@@ -109,25 +107,21 @@ export default function Hero() {
               }}
               className="flex items-center gap-3"
             >
-              <span className="h-px w-8 shrink-0 bg-white/20" />
+              <span className="h-px w-8 bg-white/20" />
 
               <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#86868B]">
                 Data Analyst · Machine Learning
               </span>
             </motion.div>
+
           </div>
         </div>
 
-        {/* =========================================
-            MAIN CONTENT
-        ========================================== */}
-
+        {/* Main Hero */}
         <div className="section-pad flex flex-1 flex-col justify-center pb-20 pt-10 md:pb-32 md:pt-16">
           <div className="relative mx-auto w-full max-w-[1100px]">
-            {/* =====================================
-                SMALL INTRO
-            ====================================== */}
 
+            {/* Small Intro */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -149,102 +143,58 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* =====================================
-                NAME + AVATAR
-            ====================================== */}
+            {/* Name */}
+            <div className="relative">
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 80,
-                filter: "blur(12px)",
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-              }}
-              transition={{
-                duration: 1.3,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative"
-            >
-              {/* Name container */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 80,
+                  filter: "blur(12px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+                transition={{
+                  duration: 1.3,
+                  delay: 0.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="relative"
+              >
+                <div className="relative flex items-center justify-between">
 
-              <div className="relative flex flex-col lg:block">
-                {/* NAME */}
+                  <h1 className="font-display text-[clamp(3.5rem,12vw,9.5rem)] font-bold leading-[0.85] tracking-tightest">
+                    REHAN
+                    <br />
+                    MUJAWAR
+                  </h1>
 
-                <h1 className="font-display text-[clamp(3.5rem,12vw,9.5rem)] font-bold leading-[0.85] tracking-tightest">
-                  REHAN
-                  <br />
-                  MUJAWAR
-                </h1>
-
-                {/* =================================
-                    AVATAR
-
-                    Mobile:
-                    centered below name
-
-                    Desktop:
-                    positioned on right
-                ================================== */}
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    scale: 0.8,
-                    y: 20,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 1,
-                    delay: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    relative
-                    mt-10
-                    flex
-                    w-full
-                    justify-center
-                    lg:absolute
-                    lg:right-0
-                    lg:top-1/2
-                    lg:mt-0
-                    lg:w-auto
-                    lg:-translate-y-1/2
-                  "
-                >
-                  <img
-                    src={avatarImg}
-                    alt="Rehan Mujawar Avatar"
-                    className="
-                      h-28
-                      w-28
-                      object-contain
-                      sm:h-36
-                      sm:w-36
-                      md:h-44
-                      md:w-44
-                      lg:h-56
-                      lg:w-56
-                    "
-                  />
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* =====================================
-                DESCRIPTION
-            ====================================== */}
-
+                  <motion.div
+  initial={{
+    opacity: 0,
+    scale: 0.8,
+  }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+  }}
+  transition={{
+    duration: 1,
+    delay: 0.6,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="relative mx-auto mt-8 flex justify-center lg:absolute lg:right-0 lg:top-1/2 lg:mx-0 lg:mt-0 lg:-translate-y-1/2"
+>
+  <img
+    src={avatarImg}
+    alt="Rehan Mujawar Avatar"
+    className="h-28 w-28 object-contain sm:h-36 sm:w-36 md:h-44 md:w-44 lg:h-56 lg:w-56"
+  />
+</motion.div>
+            {/* Description */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -268,10 +218,7 @@ export default function Hero() {
               </p>
             </motion.div>
 
-            {/* =====================================
-                CTA BUTTONS
-            ====================================== */}
-
+            {/* CTA */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -288,8 +235,6 @@ export default function Hero() {
               }}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              {/* View Work */}
-
               <a
                 href="#work"
                 data-cursor="hover"
@@ -302,8 +247,6 @@ export default function Hero() {
                 </span>
               </a>
 
-              {/* Contact */}
-
               <a
                 href="#contact"
                 data-cursor="hover"
@@ -313,10 +256,7 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* =====================================
-                STATS
-            ====================================== */}
-
+            {/* Stats */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -334,7 +274,6 @@ export default function Hero() {
               className="mt-16 grid grid-cols-1 gap-6 border-t border-white/[0.08] pt-6 sm:grid-cols-3 md:mt-20"
             >
               {/* Projects */}
-
               <div>
                 <div className="font-display text-2xl font-semibold tracking-tight text-white">
                   03+
@@ -346,7 +285,6 @@ export default function Hero() {
               </div>
 
               {/* Focus */}
-
               <div>
                 <div className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                   Data Analyst
@@ -358,7 +296,6 @@ export default function Hero() {
               </div>
 
               {/* Location */}
-
               <div>
                 <div className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                   Mumbai
@@ -369,13 +306,11 @@ export default function Hero() {
                 </div>
               </div>
             </motion.div>
+
           </div>
         </div>
 
-        {/* =========================================
-            BOTTOM SCROLL HINT
-        ========================================== */}
-
+        {/* Bottom Scroll Hint */}
         <motion.div
           initial={{
             opacity: 0,
@@ -390,6 +325,7 @@ export default function Hero() {
           className="section-pad pb-8 md:pb-10"
         >
           <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
+
             <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-[#86868B]">
               Scroll to explore
             </span>
@@ -397,9 +333,12 @@ export default function Hero() {
             <div className="scroll-hint text-lg text-[#86868B]">
               ↓
             </div>
+
           </div>
         </motion.div>
+
       </div>
     </section>
   );
 }
+pura likh kar de abhi same issue hai
