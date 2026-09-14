@@ -172,35 +172,28 @@ export default function Hero() {
                     MUJAWAR
                   </h1>
 
-                  {/* Desktop Avatar */}
                   <motion.div
-                    initial={{
-                      opacity: 0,
-                      scale: 0.8,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    transition={{
-                      duration: 1,
-                      delay: 0.6,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block"
-                  >
-                    <img
-                      src={avatarImg}
-                      alt="Rehan Mujawar Avatar"
-                      className="h-40 w-40 object-contain md:h-56 md:w-56"
-                    />
-                  </motion.div>
-
-                </div>
-              </motion.div>
-
-            </div>
-
+  initial={{
+    opacity: 0,
+    scale: 0.8,
+  }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+  }}
+  transition={{
+    duration: 1,
+    delay: 0.6,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="relative mx-auto mt-8 flex justify-center lg:absolute lg:right-0 lg:top-1/2 lg:mx-0 lg:mt-0 lg:-translate-y-1/2"
+>
+  <img
+    src={avatarImg}
+    alt="Rehan Mujawar Avatar"
+    className="h-28 w-28 object-contain sm:h-36 sm:w-36 md:h-44 md:w-44 lg:h-56 lg:w-56"
+  />
+</motion.div>
             {/* Description */}
             <motion.div
               initial={{
